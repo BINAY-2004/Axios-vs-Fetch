@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ram"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        
+        const url = "https://dummyjson.com/todos/1";
+        // fetch(url)
+        //     .then(response=>response.json())
+        //     .then(data=>{
+        // let r = document.getElementsByClassName("ram")[0];
+        // r.innerHTML = JSON.stringify(data);})
+        
+        // fetch(url)
+        //     .then(async res =>{
+        //         const json = await res.json();
+        //         let r = document.getElementsByClassName("ram")[0];
+        //         r.innerHTML = JSON.stringify(json);
+        //     });
+        // (async function(){
+        //     let res = await fetch(url);
+        //     let json = await res.json();
+        //     let r = document.getElementsByClassName("ram")[0];
+        //     r.innerHTML = JSON.stringify(json);
+
+        // })();
+        (async function(){
+            let res = await axios.get(url);
+            let r = document.getElementsByClassName("ram")[0];
+            r.innerHTML = JSON.stringify(res.data);
+
+        })();
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id1{
+            height: 100px;
+            background-color: aqua;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h2>TO-DO APP</h2>
+    <div id="id1">
+        <div class="title">
+        </div>
+        <div class="status"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const url = "https://jsonplaceholder.typicode.com/todos/1";
+        (async function(){ 
+           let res = await axios.get(url);
+           alert("laoding....")
+            let k = document.getElementsByClassName("title")[0];
+            k.innerHTML = JSON.stringify(res.data.title);
+            let l = document.getElementsByClassName("status")[0];
+            l.innerHTML = JSON.stringify(res.data.completed);
+
+        })();
+
+    </script>
+    
+</body>
+</html>

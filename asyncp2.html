@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id1{
+            background-color: aqua;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h2>TO-DO APP 2</h2>
+    <button onclick="ram()">Click ME
+    </button>
+    <span id="id1"></span>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        
+        async function ram(){
+            const url = "https://randomuser.me/api/"; 
+            let k = document.getElementById("id1");
+            k.innerHTML = "Loding Day";
+            try{
+                let res = await axios.get(url);
+                let red = res.data.results[0];
+                k.innerHTML = `<h3>${red.name.first}</h3>
+                <img src="${red.picture.large}"></img>
+                <p>${red.location.country}</p>`
+            }
+            catch(error){
+                k.innerHTML = "Failed to Load";
+                console.log(error);
+                }
+        } ;
+
+    </script>
+    
+</body>
+</html>

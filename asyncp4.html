@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id1{
+            background-color: aqua;
+            color: black;
+        }
+        .sita{
+            background-color: rgb(238, 255, 0);
+            color: blue;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>TO-DO APP 4</h2>
+    <button onclick="ram()">Click ME
+    </button>
+    <span id="id1"></span>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        
+        async function ram(){
+            const url = "https://jsonplaceholder.typicode.com/posts"; 
+            let k = document.getElementById("id1");
+            k.innerHTML = "Loding Day";
+            try{
+                let res = await axios.get(url);
+                console.log(res);
+                let red = res.data;
+                console.log(red);
+                setInterval(() => {
+                    let num = Math.floor(Math.random() * 100) + 1;
+                    console.log(num);
+                    let newDiv = document.createElement("div");
+                    newDiv.classList.add("sita")
+                    newDiv.innerHTML = `<pre>${JSON.stringify(red[num] , null , 2)}</pre>`;
+                    console.log(newDiv);
+                    k.appendChild(newDiv);
+                },3000);
+            }
+            catch(error){
+                k.innerHTML = "Failed to Load";
+                console.log(error);
+                }
+        } ;
+
+    </script>
+    
+</body>
+</html>
